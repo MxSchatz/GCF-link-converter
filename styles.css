@@ -1,0 +1,161 @@
+body {
+  background: #F3F4F8;
+  color: #585858;
+}
+
+div {
+  display: table;
+  margin: 40px auto 20px auto;
+}
+
+table {
+  padding: 10px;
+}
+
+hr {
+  display: block;
+  background-color: none;
+  border-style: none;
+  padding: 5px;
+  width: 300px;
+}
+
+h1 {
+  display: table;
+  margin: 40px auto 20px auto;
+  color: #585858;
+  font: 22px Helvetica;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+h2 {
+  display: table;
+  margin: 0px auto;
+  color: #585858;
+  font: 14px Helvetica;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+p {
+  display: table;
+  margin: auto;
+  color: #585858;
+  font: 14px Helvetica;
+  font-weight: normal;
+  letter-spacing: auto;
+}
+
+i {
+  color: #1a85fd;
+  letter-spacing: auto;
+}
+
+a {
+  color:#EF7520;
+  word-wrap: break-word;
+}
+
+textarea {
+  font: 18px Helvetica, Arial, sans-serif;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  padding: 20px;
+  width: 300px;
+  max-width: 300px;
+  margin: 20px auto;
+  color: #999;
+  background-color:#fff;
+  transition: all 0.2s ease-in-out;
+  resize: none;
+  height: auto;
+  word-wrap: break-word;
+
+}
+
+button {
+  font: 14px "open sans", Arial, sans-serif;
+  box-sizing: border-box;
+  /*display: block;*/
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: #585858;
+  color: #fff;
+  padding: 16px 20px;
+  letter-spacing: 1px;
+}
+
+button i {
+  color: #fff;
+  font-size: 1.5em;
+  letter-spacing: 7px;
+}
+
+button:hover {
+  color: #fff;
+  background-color:#000;
+}
+
+#demResultsMayne {
+  display: none;
+}
+
+#results, #clickResults {
+  margin: 20px auto;
+  color: #000;
+  background-color:#fff;
+  font: 18px Helvetica, Arial, sans-serif;
+  display: block;
+  border: none;
+  padding: 20px;
+  width: 260px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+#resultsLink {
+  text-decoration: none;
+}
+
+#title {
+  font: 18px Helvetica, Arial, sans-serif;
+  align-items: center;
+  text-align: left;
+  max-width: 300px;
+}
+
+#compatabilityNotice {
+  color: #1a85fd;
+}
+
+.convert-inputs{
+  margin:auto;
+  margin-top:2rem;
+  display:flex;
+  flex-flow:column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fadeIn {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

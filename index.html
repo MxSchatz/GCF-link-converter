@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GCF Link Converter</title>
+    <script src="https://kit.fontawesome.com/77ea0bebf3.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+
+</head>
+<body>
+
+  <div id="title">
+    <p id="compatabilityNotice" class="fadeIn"><i class="fas fa-exclamation-circle"></i> Best viewed in Chrome and Firefox.
+    </p>
+    <h1>GCF Link Converter</h1>
+  </div>
+
+  <div class="convert-inputs">
+      <textarea name="file-path" id="file-path" class="textBox" onclick="clearIt()">File Path Here</textarea>
+      <hr>
+      <h2>Convert Options</h2>
+      <table>
+        <tr>
+          <td>
+            <button id="submit-path"><i class="fab fa-windows "></i> <i class="fas fa-chevron-right"></i> <i class="fab fa-apple"></i></button>
+            <button id="submit-path"><i class="fab fa-apple"></i> <i class="fas fa-chevron-left"></i> <i class="fab fa-windows"></i></button>
+          </td>
+        </tr>
+      </table>
+  </div>
+
+
+  <div id="demResultsMayne">
+    <p class="fadeIn"></p>
+    <div id="clickResults"></div>
+    <p id="notification" class="fadeIn"></p>
+  </div>
+
+  <script src="alltheaction.js"></script>
+</body>
+
+</html>
