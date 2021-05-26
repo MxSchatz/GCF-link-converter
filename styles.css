@@ -61,7 +61,8 @@ a {
 .styled-text-box {
 	min-height: 2em;
 	width: inherit;
-	margin: 20px auto 10px;
+	/* margin: 20px auto 10px; */
+	margin: 0;
 	padding: 20px;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 18px;
