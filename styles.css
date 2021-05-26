@@ -1,3 +1,7 @@
+html {
+	font-size: 16px;
+}
+
 body {
 	margin: 0;
 	background: #f3f4f8;
@@ -15,6 +19,7 @@ body {
 h1,
 h2 {
 	margin: 3em 0 1em;
+	font-weight: 400;
 	text-transform: uppercase;
 }
 
@@ -24,13 +29,12 @@ h1 {
 }
 
 h2 {
-	font-size: 17px;
+	font-size: 18px;
 	letter-spacing: 1px;
 }
 
 p {
 	margin: 0.4rem auto;
-	font-size: 14px;
 	font-weight: normal;
 }
 
@@ -41,7 +45,6 @@ i {
 
 a {
 	color: #ef7520;
-	word-wrap: break-word;
 }
 
 .container {
@@ -53,73 +56,30 @@ a {
 	width: 100%;
 	margin: auto;
 	margin-top: 2rem;
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: space-around;
-	align-items: center;
 }
 
-#path-input {
-	min-height: 140px;
+.styled-text-box {
+	min-height: 2em;
 	width: inherit;
-	/* max-width: 380px; */
 	margin: 20px auto 10px;
 	padding: 20px;
-	position: relative;
-	display: block;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 18px;
+	line-height: 1.25;
 	color: #999;
 	background-color: #fff;
 	border: none;
 	box-sizing: border-box;
 	transition: all 0.2s ease-in-out;
 	resize: none;
-	word-wrap: break-word;
+	word-break: break-all;
 }
 
-/* button {
-	font: 14px 'open sans', Arial, sans-serif;
-	box-sizing: border-box;
-	position: relative;
-	border: none;
-	border-radius: 5px;
-	width: 150px;
-	outline: none;
-	transition: all 0.2s ease-in-out;
-	border: none;
-	background-color: #585858;
-	color: #fff;
-	padding: 16px 20px;
-	letter-spacing: 1px;
-} */
-
-/* button i {
-	color: #fff;
-	font-size: 1.5em;
-	letter-spacing: 7px;
-}
-
-button:hover {
-	color: #fff;
-	background-color: #000;
-} */
-
-#converted-output,
-#universal-output {
-	margin: 20px auto 20px;
-	padding: 20px;
-	display: block;
-	background-color: #fff;
-	color: #000;
-	font-size: 18px;
-	border: none;
-	outline: none;
-	transition: all 0.2s ease-in-out;
-}
-
-#resultsLink {
-	text-decoration: none;
+.results-link,
+.results-text {
+	color: #ef7520 !important;
+	line-height: 1.25;
+	word-break: break-all;
 }
 
 .compatibility-notice {
@@ -143,10 +103,6 @@ button:hover {
 	display: block;
 }
 
-.notification {
-	transition: opacity 1s ease;
-}
-
 .hidden {
 	opacity: 0;
 }
@@ -164,9 +120,24 @@ button:hover {
 	}
 }
 
-/*  */
+/* To delete */
+
+.dev-notes {
+	margin: 5rem 0;
+	padding: 2em;
+	border: 1px solid #ccc;
+	color: #bbb;
+}
+
+.dev-notes h2 {
+	margin-top: 0;
+}
 
 .dev-notes p {
 	text-align: left;
 	margin: 20px 0;
+}
+
+.dev-notes p:last-child {
+	margin-bottom: 0;
 }

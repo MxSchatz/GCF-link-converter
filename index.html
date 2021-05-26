@@ -20,26 +20,23 @@
 		</header>
 
 		<div id="main-content" class="container">
-			<div class="dev-notes">
-				<h2>Test strings:</h2>
-				<p>/Volumes/Shared/Digital Programs/Projects/Corporate Videos/EMIS Videos/-Read Me/Fonts</p>
-				<p>S:\Digital Programs\Projects\Corporate Videos\EMIS Videos\-Read Me\Fonts</p>
-				<p>
-					Correct macOS output: smb://gw-file/Shared/Digital Programs/Projects/Corporate Videos/EMIS
-					Videos/-Read Me/Fonts
-				</p>
-			</div>
-
 			<div class="convert-inputs">
-				<textarea name="file-path" id="path-input" placeholder="Paste file path here"></textarea>
+				<h2>Paste link here</h2>
+				<textarea
+					onClick="this.select();"
+					name="file-path"
+					id="path-input"
+					class="styled-text-box"
+					placeholder="Paste file path here"
+				></textarea>
 
 				<!-- <h2>Convert Options</h2>
 			<button id="submit-path">CONVERT!</button> -->
 			</div>
 
 			<div id="input-feedback-wrapper">
-				<p class="os-specific windows-only">Success! Windows path confirmed.</p>
-				<p class="os-specific macos-only">Success! macOS path confirmed.</p>
+				<p class="os-specific windows-only">Success! Path appears to be <strong>Windows</strong>.</p>
+				<p class="os-specific macos-only">Success! Path appears to be <strong>macOS</strong>.</p>
 				<p class="os-specific error-only">
 					Please enter a full folder path, beginning with S:\ (Windows) or /Volumes/ (macOS).
 				</p>
@@ -49,15 +46,33 @@
 				<h2 class="os-specific windows-only">MacOS link</h2>
 				<h2 class="os-specific macos-only">Windows link</h2>
 				<div id="converted-output">
-					<a class="results-link" href=""></a>
+					<a class="os-specific windows-only styled-text-box results-link" href=""></a>
+					<p class="os-specific macos-only styled-text-box results-text"></p>
 				</div>
-				<div id="notification" class="hidden notification">
+				<div class="os-specific windows-only notification">
 					<p>The link has been copied to your clipboard. Click link above to open folder.</p>
+				</div>
+				<div class="os-specific macos-only notification">
+					<p>
+						The link has been copied to your clipboard. Copy the text above and paste it into Windows
+						Explorer.
+					</p>
 				</div>
 				<h2>Universal link</h2>
 				<div id="universal-output">
 					<p><em>Coming soon</em></p>
 				</div>
+			</div>
+
+			<!-- To delete -->
+			<div class="dev-notes">
+				<h2>Test strings (to delete)</h2>
+				<p>/Volumes/Shared/Digital Programs/Projects/Corporate Videos/EMIS Videos/-Read Me/Fonts</p>
+				<p>S:\Digital Programs\Projects\Corporate Videos\EMIS Videos\-Read Me\Fonts</p>
+				<p>
+					Correct macOS output: smb://gw-file/Shared/Digital Programs/Projects/Corporate Videos/EMIS
+					Videos/-Read Me/Fonts
+				</p>
 			</div>
 		</div>
 
