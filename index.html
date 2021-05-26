@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Link Converter</title>
-    <script src="https://kit.fontawesome.com/77ea0bebf3.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="img/site.webmanifest">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Link Converter</title>
+		<script src="https://kit.fontawesome.com/77ea0bebf3.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+		<link rel="manifest" href="img/site.webmanifest" />
+	</head>
+	<body>
+		<header class="container header">
+			<!-- <p class="compatibility-notice fadeIn">
+				<i class="fas fa-exclamation-circle"></i> Best viewed in Chrome and Firefox.
+			</p> -->
+			<h1>Link Converter</h1>
+		</header>
 
-</head>
-<body>
+		<div id="main-content" class="container">
+			<div class="dev-notes">
+				<h2>Test strings:</h2>
+				<p>/Volumes/Shared/Digital Programs/Projects/Corporate Videos/EMIS Videos/-Read Me/Fonts</p>
+				<p>S:\Digital Programs\Projects\Corporate Videos\EMIS Videos\-Read Me\Fonts</p>
+				<p>
+					Correct macOS output: smb://gw-file/Shared/Digital Programs/Projects/Corporate Videos/EMIS
+					Videos/-Read Me/Fonts
+				</p>
+			</div>
 
-  <div id="title">
-    <p id="compatabilityNotice" class="fadeIn"><i class="fas fa-exclamation-circle"></i> Best viewed in Chrome and Firefox.
-    </p>
-    <h1>Link Converter</h1>
-  </div>
+			<div class="convert-inputs">
+				<textarea name="file-path" id="path-input" placeholder="Paste file path here"></textarea>
 
-  <div class="convert-inputs">
-      <textarea name="file-path" id="file-path" class="textBox" onclick="clearIt()">File Path Here</textarea>
-      <hr>
-      <h2>Convert Options</h2>
-      <table>
-        <tr>
-          <td>
-            <button id="submit-path"><i class="fab fa-windows "></i> <i class="fas fa-chevron-right"></i> <i class="fab fa-apple"></i></button>
-            <button id="submit-path"><i class="fab fa-apple"></i> <i class="fas fa-chevron-left"></i> <i class="fab fa-windows"></i></button>
-          </td>
-        </tr>
-      </table>
-  </div>
+				<!-- <h2>Convert Options</h2>
+			<button id="submit-path">CONVERT!</button> -->
+			</div>
 
-  <div id="demResultsMayne">
-    <p class="fadeIn"></p>
-    <div id="clickResults"></div>
-    <p id="notification" class="fadeIn"></p>
-  </div>
+			<div id="input-feedback-wrapper">
+				<p class="os-specific windows-only">Success! Windows path confirmed.</p>
+				<p class="os-specific macos-only">Success! macOS path confirmed.</p>
+				<p class="os-specific error-only">
+					Please enter a full folder path, beginning with S:\ (Windows) or /Volumes/ (macOS).
+				</p>
+			</div>
 
-  <script src="alltheaction.js"></script>
-</body>
+			<div id="output-wrapper" class="hidden">
+				<h2 class="os-specific windows-only">MacOS link</h2>
+				<h2 class="os-specific macos-only">Windows link</h2>
+				<div id="converted-output">
+					<a class="results-link" href=""></a>
+				</div>
+				<div id="notification" class="hidden notification">
+					<p>The link has been copied to your clipboard. Click link above to open folder.</p>
+				</div>
+				<h2>Universal link</h2>
+				<div id="universal-output">
+					<p><em>Coming soon</em></p>
+				</div>
+			</div>
+		</div>
 
+		<script src="alltheaction.js"></script>
+	</body>
 </html>
