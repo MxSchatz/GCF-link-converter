@@ -44,7 +44,7 @@ i {
 }
 
 a {
-	color: #ef7520;
+	color: #ef7520 !important;
 }
 
 .container {
@@ -59,7 +59,7 @@ a {
 }
 
 .styled-text-box {
-	min-height: 2em;
+	min-height: 4em;
 	width: inherit;
 	margin: 0;
 	padding: 20px;
@@ -78,7 +78,7 @@ a {
 
 .results-link,
 .results-text {
-	color: #ef7520 !important;
+	/* color: #ef7520 !important; */
 	line-height: 1.25;
 	word-break: break-all;
 }
