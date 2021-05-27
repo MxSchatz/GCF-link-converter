@@ -86,8 +86,8 @@ function processPath(path, isFromLink) {
 }
 
 function getUniversalURL(webSafe) {
-	console.log(window.location.protocol + window.location.host + '/link/?path=' + webSafe);
-	return window.location.protocol + window.location.host + '/link/?path=' + webSafe;
+	console.log(window.location.protocol + window.location.host + window.location.pathname + 'link/?path=' + webSafe);
+	return window.location.protocol + window.location.host + window.location.pathname + 'link/?path=' + webSafe;
 }
 
 function sendToClipboard(uri) {
