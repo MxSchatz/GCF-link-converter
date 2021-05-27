@@ -1,4 +1,4 @@
-const WINDOWSPREFIX = 'smb://S:\\';
+const WINDOWSPREFIX = 'S:\\';
 const MACPREFIX = 'smb://gw-file/Shared/';
 
 console.log('js loaded');
@@ -30,7 +30,9 @@ function processLink(queryString) {
 }
 
 function getOS(path) {
-	if (path.search(/^.:\\/) > -1 || path.search(/^smb:\/\/S:\\/) > -1) return 'windows';
+	// note: the returned OS will be the OS used in the file path, which will be different from the user's OS
+
+	if (path.search(/^.:\\/) > -1 || path.search(/^smb:\/\/.:\\/) > -1) return 'windows';
 	if (path.search(/^\/Volumes/i) > -1 || path.search(/^smb:\/\/gw-file/) > -1) return 'macos';
 	return 'error';
 }
@@ -59,6 +61,7 @@ function processPath(path, isFromLink) {
 	let newPath = '';
 	let mainPath = '';
 	const os = getOS(path);
+	console.log('os', os);
 
 	if (!isFromLink) {
 		document.getElementById('main-content').dataset.os = os;
@@ -81,7 +84,7 @@ function processPath(path, isFromLink) {
 	const macosPath = MACPREFIX + mainPath;
 
 	return {
-		local: os === 'windows' ? windowsPath : macosPath,
+		local: os === 'macos' ? windowsPath : macosPath,
 		windows: windowsPath,
 		macos: macosPath,
 		webSafe: encodeURI(mainPath)
