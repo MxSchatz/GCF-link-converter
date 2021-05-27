@@ -1,4 +1,4 @@
-const WINDOWSPREFIX = 'S:\\';
+const WINDOWSPREFIX = 'smb://S:\\';
 const MACPREFIX = 'smb://gw-file/Shared/';
 
 document.querySelector('#path-input').addEventListener('input', submitPath);
@@ -10,7 +10,7 @@ function getOS(path) {
 }
 
 function submitPath(e) {
-	const userPath = document.querySelector('#path-input').value;
+	const userPath = e.target.value;
 
 	if (userPath.length === 0) return;
 
@@ -31,17 +31,17 @@ function processPath(path) {
 
 	document.getElementById('main-content').dataset.os = os;
 
-	if (os === 'error') return 'error';
-
 	if (os === 'windows') {
 		newPath = MACPREFIX + path.replace(/^.:\\/, '').replace(/\\/g, '/');
-	} else {
+	} else if (os === 'macos') {
 		newPath =
 			WINDOWSPREFIX +
 			path
 				.replace('/Volumes/Shared/', '')
 				.replace(/^smb:\/\/gw-file\/Shared\//, '')
 				.replace(/\//g, '\\');
+	} else {
+		return 'error';
 	}
 
 	return newPath.split(' ').join('%20');
@@ -60,6 +60,6 @@ function sendToClipboard(uri) {
 function printOutput(uri) {
 	document.querySelector('#converted-output .results-link').setAttribute('href', uri);
 	document.querySelector('#converted-output .results-link').innerText = uri;
-	document.querySelector('#converted-output .results-text').innerText = uri;
+	// document.querySelector('#converted-output .results-text').innerText = uri;
 	document.getElementById('output-wrapper').classList.remove('hidden');
 }
