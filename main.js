@@ -1,7 +1,10 @@
 const WINDOWSPREFIX = 'smb://S:\\';
 const MACPREFIX = 'smb://gw-file/Shared/';
 
-if (window.location.pathname === '/link/') {
+console.log('js loaded');
+console.log(window.location.pathname);
+
+if (window.location.pathname.search(/\/link\/$/) > -1) {
 	processLink(window.location.search);
 }
 
