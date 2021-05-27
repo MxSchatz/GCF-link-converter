@@ -1,5 +1,6 @@
-const WINDOWSPREFIX = 'S:\\';
+const WINDOWSPREFIX = 'file:///S:\\';
 const MACPREFIX = 'smb://gw-file/Shared/';
+const userOS = window.navigator.platform;
 
 console.log('js loaded');
 console.log(window.location.pathname);
@@ -25,14 +26,22 @@ function processLink(queryString) {
 	const windowsURI = new URL(newPath.windows).href;
 	const macosURI = new URL(newPath.macos).href;
 
+	if (userOS === 'MacIntel') {
+		copyToClipboard(macosURI);
+		// sendToClipboard(macosURI);
+	} else {
+		copyToClipboard(windowsURI);
+		// sendToClipboard(windowsURI);
+	}
+
 	printOutputFromLink(windowsURI, macosURI);
-	handleRedirects(windowsURI, macosURI);
+	// handleRedirects(windowsURI, macosURI);
 }
 
-function getOS(path) {
+function getOS(path, isFromLink) {
 	// note: the returned OS will be the OS used in the file path, which will be different from the user's OS
-
-	if (path.search(/^.:\\/) > -1 || path.search(/^smb:\/\/.:\\/) > -1) return 'windows';
+	if (isFromLink) return 'N/A';
+	if (path.search(/^.:\\/) > -1 || path.search(/^file:\/\/\/.:\\/) > -1) return 'windows';
 	if (path.search(/^\/Volumes/i) > -1 || path.search(/^smb:\/\/gw-file/) > -1) return 'macos';
 	return 'error';
 }
@@ -53,14 +62,14 @@ function submitPath(e) {
 	const uri = new URL(newPath.local).href;
 	const universal = new URL(getUniversalURL(newPath.webSafe));
 
-	sendToClipboard(uri);
+	copyToClipboard(uri);
 	printOutput(uri, universal);
 }
 
 function processPath(path, isFromLink) {
 	let newPath = '';
 	let mainPath = '';
-	const os = getOS(path);
+	const os = getOS(path, isFromLink);
 	console.log('os', os);
 
 	if (!isFromLink) {
@@ -97,13 +106,24 @@ function getUniversalURL(webSafe) {
 }
 
 function sendToClipboard(uri) {
+	console.log('clipboard', uri);
 	const el = document.createElement('textarea');
 
 	el.value = uri;
 	document.body.appendChild(el);
 	el.select();
-	document.execCommand('copy');
+	console.log(document.execCommand('copy'));
+	// navigator.clipboard.writeText(uri);
+	console.log(el.value);
 	document.body.removeChild(el);
+}
+
+async function copyToClipboard(uri) {
+	try {
+		await navigator.clipboard.writeText(uri);
+	} catch (err) {
+		console.error('Failed to copy: ', err);
+	}
 }
 
 function printOutput(uri, universal) {
@@ -125,9 +145,8 @@ function printOutputFromLink(windowsURI, macosURI) {
 }
 
 function handleRedirects(windowsURI, macosURI) {
-	const os = window.navigator.platform;
-
-	if (os === 'MacIntel') {
+	// currently only redirects for Mac users
+	if (userOS === 'MacIntel') {
 		window.location = macosURI;
 	}
 }
