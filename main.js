@@ -105,15 +105,13 @@ function getUniversalURL(webSafe) {
 	return window.location.protocol + window.location.host + window.location.pathname + 'link/?path=' + webSafe;
 }
 
-function sendToClipboard(uri) {
-	console.log('clipboard', uri);
+function sendToClipboardFallback(uri) {
 	const el = document.createElement('textarea');
 
 	el.value = uri;
 	document.body.appendChild(el);
 	el.select();
-	console.log(document.execCommand('copy'));
-	// navigator.clipboard.writeText(uri);
+	document.execCommand('copy');
 	console.log(el.value);
 	document.body.removeChild(el);
 }
@@ -122,7 +120,8 @@ async function copyToClipboard(uri) {
 	try {
 		await navigator.clipboard.writeText(uri);
 	} catch (err) {
-		console.error('Failed to copy: ', err);
+		console.error('Failed to copy, will attempt fallback: ', err);
+		sendToClipboardFallback(uri);
 	}
 }
 
