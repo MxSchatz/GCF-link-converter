@@ -35,7 +35,7 @@ function processLink(queryString) {
 	}
 
 	printOutputFromLink(windowsURI, macosURI);
-	// handleRedirects(windowsURI, macosURI);
+	handleRedirects(windowsURI, macosURI);
 }
 
 function getOS(path, isFromLink) {
