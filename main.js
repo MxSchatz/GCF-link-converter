@@ -47,7 +47,7 @@ function getOS(path, isFromLink) {
 }
 
 function submitPath(e) {
-	const userPath = e.target.value;
+	const userPath = e.target.value.trim();
 
 	if (userPath.length === 0) return;
 
