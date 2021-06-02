@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Link Converter</title>
 		<script src="https://kit.fontawesome.com/77ea0bebf3.js"></script>
 		<link rel="stylesheet" type="text/css" href="styles.css" />
@@ -29,9 +30,6 @@
 					class="styled-text-box"
 					placeholder="Paste file path here"
 				></textarea>
-
-				<!-- <h2>Convert Options</h2>
-			<button id="submit-path">CONVERT!</button> -->
 			</div>
 
 			<div id="input-feedback-wrapper">
@@ -45,9 +43,9 @@
 			<div id="output-wrapper" class="hidden">
 				<h2 class="os-specific windows-only">MacOS link</h2>
 				<h2 class="os-specific macos-only">Windows link</h2>
-				<div id="converted-output">
-					<a class="styled-text-box results-link" href=""></a>
-					<!-- <p class="os-specific macos-only styled-text-box results-text"></p> -->
+				<div id="converted-output" class="styled-text-box">
+					<a class="results-link os-specific windows-only" href=""></a>
+					<p class="results-text os-specific macos-only"></p>
 				</div>
 				<div class="os-specific windows-only notification">
 					<p>The link has been copied to your clipboard. Click link above to open folder.</p>
@@ -59,17 +57,17 @@
 					</p>
 				</div>
 				<h2>Universal URL</h2>
-				<div id="universal-output">
-					<p class="styled-text-box results-link"></p>
+				<div id="universal-output" class="styled-text-box">
+					<p class="results-link"></p>
 				</div>
 			</div>
 
 			<!-- To delete -->
-			<div class="dev-notes">
+			<!-- <div class="dev-notes">
 				<h2>Test strings (to delete)</h2>
 				<p>/Volumes/Shared/Digital Programs/Projects/Corporate Videos/EMIS Videos/-Read Me/Fonts</p>
 				<p>S:\Digital Programs\Projects\Corporate Videos\EMIS Videos\-Read Me\Fonts</p>
-			</div>
+			</div> -->
 		</div>
 
 		<script src="main.js"></script>

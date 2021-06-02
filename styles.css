@@ -56,8 +56,9 @@ a {
 }
 
 .container {
+	max-width: 40rem;
 	margin: 0 auto;
-	max-width: 40em;
+	padding: 0 1.5rem;
 }
 
 .convert-inputs {
@@ -86,7 +87,6 @@ a {
 
 .results-link,
 .results-text {
-	/* color: #ef7520 !important; */
 	line-height: 1.25;
 	word-break: break-all;
 }
@@ -116,10 +116,6 @@ a {
 	opacity: 0;
 }
 
-.fade-in {
-	animation: fadeIn 1s;
-}
-
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -131,7 +127,7 @@ a {
 
 /* To delete */
 
-.dev-notes {
+/* .dev-notes {
 	margin: 5rem 0;
 	padding: 2em;
 	border: 1px solid #ccc;
@@ -149,4 +145,4 @@ a {
 
 .dev-notes p:last-child {
 	margin-bottom: 0;
-}
+} */

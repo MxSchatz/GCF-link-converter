@@ -28,10 +28,8 @@ function processLink(queryString) {
 
 	if (userOS === 'MacIntel') {
 		copyToClipboard(macosURI);
-		// sendToClipboard(macosURI);
 	} else {
 		copyToClipboard(windowsURI);
-		// sendToClipboard(windowsURI);
 	}
 
 	printOutputFromLink(windowsURI, macosURI);
@@ -39,9 +37,9 @@ function processLink(queryString) {
 }
 
 function getOS(path, isFromLink) {
-	// note: the returned OS will be the OS used in the file path, which will be different from the user's OS
+	// Important: the returned OS will be the OS used in the file path, which will be different from the user's OS
 	if (isFromLink) return 'N/A';
-	if (path.search(/^.:\\/) > -1 || path.search(/^file:\/\/\/.:\\/) > -1) return 'windows';
+	if (path.search(/^.:\\/) > -1 || path.search(/^file:\/\/\/.:/) > -1) return 'windows';
 	if (path.search(/^\/Volumes/i) > -1 || path.search(/^smb:\/\/gw-file/) > -1) return 'macos';
 	return 'error';
 }
@@ -62,6 +60,7 @@ function submitPath(e) {
 	const uri = new URL(newPath.local).href;
 	const universal = new URL(getUniversalURL(newPath.webSafe));
 
+	console.log(uri);
 	copyToClipboard(uri);
 	printOutput(uri, universal);
 }
@@ -70,7 +69,7 @@ function processPath(path, isFromLink) {
 	let newPath = '';
 	let mainPath = '';
 	const os = getOS(path, isFromLink);
-	console.log('os', os);
+	console.log('os:', os);
 
 	if (!isFromLink) {
 		document.getElementById('main-content').dataset.os = os;
@@ -78,8 +77,9 @@ function processPath(path, isFromLink) {
 
 	if (os === 'windows' || isFromLink) {
 		mainPath = path
-			.replace(/^smb:\/\//, '')
-			.replace(/^.:\\/, '')
+			.replace(/smb:\/\//, '')
+			.replace(/file:\/\/\//, '')
+			.replace(/^.:[\\\/]/, '')
 			.replace(/\\/g, '/');
 	} else if (os === 'macos') {
 		mainPath = path.replace('/Volumes/Shared/', '').replace(/^smb:\/\/gw-file\/Shared\//, '');
@@ -90,6 +90,7 @@ function processPath(path, isFromLink) {
 	mainPath = mainPath.split(' ').join('%20');
 
 	const windowsPath = WINDOWSPREFIX + mainPath.replace(/\//g, '\\');
+	console.log(windowsPath);
 	const macosPath = MACPREFIX + mainPath;
 
 	return {
@@ -101,7 +102,7 @@ function processPath(path, isFromLink) {
 }
 
 function getUniversalURL(webSafe) {
-	console.log(window.location.protocol + window.location.host + window.location.pathname + 'link/?path=' + webSafe);
+	console.log('location', window.location);
 	return window.location.protocol + window.location.host + window.location.pathname + 'link/?path=' + webSafe;
 }
 
@@ -128,9 +129,8 @@ async function copyToClipboard(uri) {
 function printOutput(uri, universal) {
 	document.querySelector('#converted-output .results-link').setAttribute('href', uri);
 	document.querySelector('#converted-output .results-link').innerText = uri;
-	// document.querySelector('#converted-output .results-text').innerText = uri;
+	document.querySelector('#converted-output .results-text').innerText = uri;
 
-	// document.querySelector('#universal-output .results-link').setAttribute('href', universal);
 	document.querySelector('#universal-output .results-link').innerText = universal;
 
 	document.getElementById('output-wrapper').classList.remove('hidden');
